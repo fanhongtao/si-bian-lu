@@ -19,3 +19,33 @@
 \usepackage{tableof}
 \usepackage{varwidth}
 
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+
+\newenvironment{yinyong}{
+    \begin{quotation}
+}{%
+    \end{quotation}
+}
+
+
+\newtcbox{\mytag}{nobeforeafter,tcbox raise base, boxrule=0.4pt,
+    top=0mm,bottom=0mm,right=0mm,left=0mm,
+    arc=1pt,boxsep=2pt,before upper={\vphantom{dlg}},
+    colframe=green!50!black,coltext=green!25!black,colback=green!10!white
+}
+
+\ExplSyntaxOn
+\clist_new:N \g_tag_list
+\newenvironment{taged}[1]{
+    \clist_gset:Nn \g_tag_list {#1}
+    \toftagthis{#1}
+}{
+    \begin{center}
+    \clist_map_inline:Nn \g_tag_list {
+        \mytag{##1} \;
+    }
+    \end{center}
+}
+\ExplSyntaxOff
