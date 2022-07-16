@@ -49,3 +49,23 @@
     \end{center}
 }
 \ExplSyntaxOff
+
+
+\newcommand{\contentsep}{ % 文中内容的分隔符
+    \begin{center}
+        * * * * * * * * *
+    \end{center}
+}
+
+\newenvironment{shici} % 诗词
+{
+    \begin{tcolorbox}[
+        halign=flush center,
+        colframe=white,
+        colback=white
+    ]
+}
+{
+    \end{tcolorbox}
+}
+
